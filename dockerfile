@@ -21,5 +21,9 @@ apt-get -y install docker-ce
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 RUN chown -R /var/jenkins_home
+RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+RUN chmod 700 get_helm.sh
+RUN ./get_helm.sh
+RUN chown jenkins /usr/local/bin/helm
 USER jenkins
 
